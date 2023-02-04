@@ -67,7 +67,7 @@ Route::middleware(['auth'])->group(function () {
         Route::put('/{pd}', [PemerintahDesaController::class, 'update'])->name('pmd.update');
         Route::delete('/{pd}', [PemerintahDesaController::class, 'destroy'])->name('pmd.destroy');
     });
-    Route::prefix('berita')->group(function () {
+    Route::prefix('/berita')->group(function () {
         Route::get('/', [BeritaDesaController::class, 'index'])->name('berita.index');
         Route::get('/create', [BeritaDesaController::class, 'create'])->name('berita.create');
         Route::post('/', [BeritaDesaController::class, 'store'])->name('berita.store');
@@ -75,7 +75,7 @@ Route::middleware(['auth'])->group(function () {
         Route::put('/{profilDesa}', [BeritaDesaController::class, 'update'])->name('berita.update');
         Route::delete('/{profilDesa}', [BeritaDesaController::class, 'destroy'])->name('berita.destroy');
     });
-    Route::prefix('berita/kategori')->group(function () {
+    Route::prefix('/berita/kategori')->group(function () {
         Route::get('/', [KategoriDesaController::class, 'index'])->name('kategori.index');
         Route::get('/create', [KategoriDesaController::class, 'create'])->name('kategori.create');
         Route::post('/', [KategoriDesaController::class, 'store'])->name('kategori.store');

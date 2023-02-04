@@ -22,6 +22,7 @@ class UserFactory extends Factory
         return [
             'us_name' => "Admin",
             'us_email' => "admin@gmail.com",
+            'us_photo' => fake()->imageUrl,
             'us_email_verified_at' => now(),
             'password' => Hash::make('admin'), // admin
             'rs_id' => Role::first()->rs_id,

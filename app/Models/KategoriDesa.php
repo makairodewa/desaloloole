@@ -10,6 +10,6 @@ class KategoriDesa extends Model
 {
     use HasFactory, HasUuids;
 
-    protected $guarded = 'kd_id';
-    protected $primaryKey = 'kd_id';
+    protected $guarded = 'ktd_id';
+    protected $primaryKey = 'ktd_id';
 }

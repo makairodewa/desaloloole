@@ -14,9 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('kategori_desas', function (Blueprint $table) {
-            $table->uuid('kd_id');
-            $table->string('kd_slug');
-            $table->string('kd_nama');
+            $table->uuid('ktd_id');
+            $table->string('ktd_slug');
+            $table->string('ktd_nama');
             $table->timestamps();
         });
     }

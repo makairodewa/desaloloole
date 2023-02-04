@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('pemerintah_desas', function (Blueprint $table) {
             $table->uuid('pmd_id');
             $table->string('pmd_nama')->unique();
-            $table->string('pmd_jabatan');
+            $table->string('pmd_jabatan')->unique();
             $table->string('pmd_photo')->nullable();
             $table->string('pmd_notlp')->nullable();
             $table->string('pmd_fb')->nullable();

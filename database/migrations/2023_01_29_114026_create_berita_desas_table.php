@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('bd_nama');
             $table->string('bd_excerpt');
             $table->string('bd_body');
-            $table->foreignUuid('bd_kd_id');
+            $table->foreignUuid('bd_us_id');
             $table->timestamps();
         });
     }

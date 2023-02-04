@@ -2,10 +2,10 @@
 
 @extends('layouts.admin.app')
 @section('title')
-    Edit Kontak Desa
+    Pemerintahan Desa
 @endsection
 @section('content')
-    <form action="{{ route('pmd.update', $kd->kd_id) }}" method="post">
+    <form action="{{ route('pmd.update', $data->pmd_id) }}" method="post">
         @csrf
         @method('put')
         <div class="row">
@@ -18,7 +18,7 @@
                                 class="form-control @error('name')
                 is-invalid
             @enderror"
-                                name="name" id="name" value="{{ $kd->kd_nama }}">
+                                name="name" id="name" value="{{ $data->pmd_nama }}">
                             @error('name')
                                 <div class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -26,39 +26,13 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="email">Email</label>
+                            <label for="jabatan">Jabatan</label>
                             <input type="text"
-                                class="form-control @error('email')
+                                class="form-control @error('jabatan')
                 is-invalid
             @enderror"
-                                name="email" id="email" value="{{ $kd->kd_email }}">
-                            @error('email')
-                                <div class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </div>
-                            @enderror
-                        </div>
-                        <div class="form-group">
-                            <label for="notlp">No Tlpn</label>
-                            <input type="number"
-                                class="form-control @error('notlp')
-                is-invalid
-            @enderror"
-                                name="notlp" id="notlp" value="{{ $kd->kd_notlp }}">
-                            @error('notlp')
-                                <div class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </div>
-                            @enderror
-                        </div>
-                        <div class="form-group">
-                            <label for="alamat">Alamat</label>
-                            <input type="text"
-                                class="form-control @error('alamat')
-                is-invalid
-            @enderror"
-                                name="alamat" id="alamat" value="{{ $kd->kd_alamat }}">
-                            @error('alamat')
+                                name="jabatan" id="jabatan" value="{{ $data->pmd_jabatan }}">
+                            @error('jabatan')
                                 <div class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </div>

@@ -2,36 +2,28 @@
 
 @extends('layouts.admin.app')
 @section('title')
-    Pemerintahan Desa
+    Kategori Berita
 @endsection
 @section('content')
-    <form action="{{ route('pmd.store') }}" method="post">
+    <form action="{{ route('kategori.store') }}" method="post">
+        @if (isset($data))
+            @method('put')
+        @else
+            @method('post')
+        @endif
         @csrf
         <div class="row">
             <div class="col-sm-12 col-lg-6 col-sm-12">
                 <div class="card card-outline card-info">
                     <div class="card-body">
                         <div class="form-group">
-                            <label for="name">Nama</label>
+                            <label for="name">Kategori</label>
                             <input type="text"
                                 class="form-control @error('name')
                 is-invalid
             @enderror"
                                 name="name" id="name" value="{{ old('name') }}">
                             @error('name')
-                                <div class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </div>
-                            @enderror
-                        </div>
-                        <div class="form-group">
-                            <label for="jabatan">Jabatan</label>
-                            <input type="text"
-                                class="form-control @error('jabatan')
-                is-invalid
-            @enderror"
-                                name="jabatan" id="jabatan" value="{{ old('jabatan') }}">
-                            @error('jabatan')
                                 <div class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </div>

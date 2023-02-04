@@ -17,8 +17,8 @@ class KategoriDesaFactory extends Factory
     public function definition()
     {
         return [
-            'kd_slug' => str()->slug(fake()->sentence()),
-            'kd_nama' => fake()->sentence()
+            'ktd_slug' => str()->slug(fake()->sentence()),
+            'ktd_nama' => fake()->sentence()
         ];
     }
 }

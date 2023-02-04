@@ -23,13 +23,14 @@
             @foreach ($results as $row)
                 <tr>
                     {{-- <td>{{ $role->rs_id }}</td> --}}
-                    <td>{{ $row->kd_nama }}</td>
+                    <td>{{ $row->ktd_nama }}</td>
                     <td>
-                        <a href="{{ route('kategori.edit', $row->kd_id) }}" class="btn btn-warning">Edit</a>
-                        <form action="{{ route('kategori.destroy', $row->kd_id) }}" method="post" class="d-inline">
+                        <a href="{{ route('kategori.edit', $row->ktd_id) }}" class="btn btn-warning">Edit</a>
+                        <form action="{{ route('kategori.destroy', $row->ktd_id) }}" method="post" class="d-inline">
                             @csrf
                             @method('delete')
-                            <button type="submit" class="btn btn-danger">Delete</button>
+                            <button type="submit" class="btn btn-danger"
+                                onclick=" return confirm('Hapus {{ $row->ktd_nama }} ? ')">Delete</button>
                         </form>
                     </td>
                 </tr>

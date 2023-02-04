@@ -5,7 +5,7 @@
     Berita
 @endsection
 @section('content')
-    <a href="{{ route('kategori.create') }}" class="btn btn-primary mb-3">Add Berita</a>
+    <a href="{{ route('berita.create') }}" class="btn btn-primary mb-3">Add Berita</a>
     @if (session('success'))
         <div class="alert alert-success">
             {{ session('success') }}
