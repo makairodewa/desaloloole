@@ -3,6 +3,7 @@
 use App\Http\Controllers\BeritaDesaController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GuestController;
+use App\Http\Controllers\JabatanController;
 use App\Http\Controllers\KategoriDesaController;
 use App\Http\Controllers\KontakDesaController;
 use App\Http\Controllers\PemerintahDesaController;
@@ -66,6 +67,14 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/{pd}/edit', [PemerintahDesaController::class, 'edit'])->name('pmd.edit');
         Route::put('/{pd}', [PemerintahDesaController::class, 'update'])->name('pmd.update');
         Route::delete('/{pd}', [PemerintahDesaController::class, 'destroy'])->name('pmd.destroy');
+    });
+    Route::prefix('master/jabatan')->group(function () {
+        Route::get('/', [JabatanController::class, 'index'])->name('jb.index');
+        Route::get('/create', [JabatanController::class, 'create'])->name('jb.create');
+        Route::post('/', [JabatanController::class, 'store'])->name('jb.store');
+        Route::get('/{pd}/edit', [JabatanController::class, 'edit'])->name('jb.edit');
+        Route::put('/{pd}', [JabatanController::class, 'update'])->name('jb.update');
+        Route::delete('/{pd}', [JabatanController::class, 'destroy'])->name('jb.destroy');
     });
     Route::prefix('/berita')->group(function () {
         Route::get('/', [BeritaDesaController::class, 'index'])->name('berita.index');

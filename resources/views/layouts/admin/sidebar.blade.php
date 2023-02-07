@@ -31,6 +31,13 @@
                         <p>Pemerintahan</p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ route('jb.index') }}"
+                        class="nav-link {{ request()->segment(2) == 'jabatan' ? 'active' : '' }}">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Jabatan</p>
+                    </a>
+                </li>
             </ul>
         </li>
         <li class="nav-item  {{ request()->is('berita') || request()->is('berita/*') ? 'menu-open ' : '' }} ">

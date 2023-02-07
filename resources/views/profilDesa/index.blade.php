@@ -35,6 +35,7 @@
                     <td>
                         {{-- <a href="{{ route('pd.edit', $result->pd_id) }}" class="btn btn-sm btn-info">View</a> --}}
                         <a href="{{ route('pd.edit', $result->pd_id) }}" class="btn btn-sm btn-warning">Edit</a>
+
                         <form action="{{ route('pd.destroy', $result->pd_id) }}" method="post" class="d-inline">
                             @csrf
                             @method('delete')

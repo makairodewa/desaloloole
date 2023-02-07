@@ -11,58 +11,74 @@
         </div>
     @endif
     <a href="{{ route('pmd.create') }}" class="btn btn-primary mb-3">Add Pemerintahan</a>
-    <div class="row">
-        @foreach ($results as $row)
-            <div class="col-md-4">
-                <div class="card card-widget widget-user-2">
-                    <div class="widget-user-header"
-                        style="background-color: #{{ str_pad(dechex(rand(0x000000, 0xffffff)), 6, 0, STR_PAD_LEFT) }}">
-                        <div class="widget-user-image">
-                            @if (isset($row->pmd_photo))
-                                <img class="img-circle elevation-2" src="{{ $row->pmd_photo }}" alt="User Avatar">
-                            @else
-                                <img class="img-circle elevation-2" src="{{ asset('dist/img/user7-128x128.jpg') }}"
-                                    alt="User Avatar">
-                            @endif
+    <div class="card card-solid">
+        <div class="card-body pb-0">
+            <div class="row">
+
+                @foreach ($results as $item)
+                    <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
+                        <div class="card bg-light d-flex flex-fill">
+                            <div class="card-header text-muted border-bottom-0">
+                                {{ $item->jabatan->jb_nama }}
+                            </div>
+                            <div class="card-body pt-0">
+                                <div class="row">
+                                    <div class="col-7">
+                                        <h2 class="lead"><b> {{ $item->pmd_nama }}</b></h2>
+                                        {{-- <p class="text-muted text-sm"><b>About: </b> Web Designer / UX / Graphic Artist /
+                                            Coffee Lover </p> --}}
+                                        <ul class="ml-4 mb-0 fa-ul text-muted">
+                                            <li class="small"><span class="fa-li"><i
+                                                        class="fas fa-lg fa-building"></i></span>
+                                                Alamat:{{ $item->pmd_notlp }},
+                                            </li>
+                                            <li class="small"><span class="fa-li"><i
+                                                        class="fas fa-lg fa-phone"></i></span>
+                                                Phone #: {{ $item->pmd_notlp }}
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-5 text-center">
+                                        <img src="../../dist/img/user1-128x128.jpg" alt="user-avatar"
+                                            class="img-circle img-fluid">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="text-right">
+                                    <a href="#" class="btn btn-sm bg-warning">
+                                        <i class="fas fa-edit"></i> Edit
+                                    </a>
+                                    <form method="POST" class="d-inline"
+                                        action="{{ route('pmd.destroy', $item->pmd_id) }}">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-sm btn-danger btn btn-circle"><i
+                                                class="fa fa-trash">
+                                            </i> Delete</button>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
-                        <h3 class="widget-user-username">{{ $row->pmd_nama }}</h3>
-                        <h5 class="widget-user-desc">{{ $row->pmd_jabatan }}</h5>
                     </div>
-                    <div class="card-footer p-0">
-                        <ul class="nav flex-column">
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    Notlpn <span class="float-right badge bg-primary">{{ $row->pmd_notlp }}</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    Facebook <span class="float-right badge bg-info">{{ $row->pmd_fb }}</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link text-orange">
-                                    Instagram <span class="float-right badge bg-success">{{ $row->pmd_ig }}</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link text-success">
-                                    WhattsApp <span class="float-right badge bg-danger">{{ $row->pmd_wa }}</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="card-body">
-                        <a href="{{ route('pmd.edit', $row->pmd_id) }}" class="btn btn-sm btn-warning">Edit</a>
-                        <form action="{{ route('pmd.destroy', $row->pmd_id) }}" method="post" class="d-inline">
-                            @csrf
-                            @method('delete')
-                            <button type="submit" class="btn btn-sm btn-danger"
-                                onclick="return confirm('Apakah yakin ingin menghapus data ini?')">Hapus</button>
-                        </form>
-                    </div>
-                </div>
+                @endforeach
             </div>
-        @endforeach
+        </div>
+        <!-- /.card-body -->
+        <div class="card-footer">
+            <nav aria-label="Contacts Page Navigation">
+                <ul class="pagination justify-content-center m-0">
+                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">4</a></li>
+                    <li class="page-item"><a class="page-link" href="#">5</a></li>
+                    <li class="page-item"><a class="page-link" href="#">6</a></li>
+                    <li class="page-item"><a class="page-link" href="#">7</a></li>
+                    <li class="page-item"><a class="page-link" href="#">8</a></li>
+                </ul>
+            </nav>
+        </div>
+        <!-- /.card-footer -->
     </div>
 @endsection

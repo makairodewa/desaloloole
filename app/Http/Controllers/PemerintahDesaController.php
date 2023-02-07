@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Jabatan;
 use App\Models\PemerintahDesa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -10,27 +11,29 @@ class PemerintahDesaController extends Controller
 {
     public function index()
     {
-        $results = PemerintahDesa::all();
+        $results = PemerintahDesa::latest()->get();
         return view('pemerintahan.index', compact('results'));
     }
 
     public function create()
     {
-        return view('pemerintahan.create');
+        $jabatan  = Jabatan::all();
+        return view('pemerintahan.create', compact('jabatan'));
     }
 
     public function store(Request $request)
     {
         $validateData = $request->validate(
             [
-                'name' => 'required',
-                'jabatan' => 'required',
+                'name' => 'required|unique:pemerintah_desas,pmd_nama',
+                'jabatan' => 'required|unique:pemerintah_desas,pmd_jb_id',
             ]
         );
         $data = new  PemerintahDesa();
         $data->pmd_nama = $validateData['name'];
         $data->pmd_jabatan = $validateData['jabatan'];
         $data->pmd_us_id = Auth::user()->us_id;
+        $data->pmd_jb_id = $validateData['jabatan'];
         $data->save();
         return redirect()->route('pmd.index')->with('success', 'Pemerintahan desa was created successfully');
     }

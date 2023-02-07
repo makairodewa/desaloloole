@@ -20,21 +20,23 @@
                                 name="name" id="name" value="{{ old('name') }}">
                             @error('name')
                                 <div class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
+                                    {{ $message }}
                                 </div>
                             @enderror
                         </div>
                         <div class="form-group">
                             <label for="jabatan">Jabatan</label>
-                            <input type="text"
-                                class="form-control @error('jabatan')
-                is-invalid
-            @enderror"
-                                name="jabatan" id="jabatan" value="{{ old('jabatan') }}">
+                            <select class="form-control @error('jabatan') is-invalid @enderror" id="jabatan"
+                                name="jabatan">
+                                <option selected disabled>Pilih Jabatan</option>
+                                @foreach ($jabatan as $position)
+                                    <option value="{{ $position->jb_id }}"
+                                        {{ old('jabatan') == $position->jb_id ? 'selected' : '' }}>{{ $position->jb_nama }}
+                                    </option>
+                                @endforeach
+                            </select>
                             @error('jabatan')
-                                <div class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </div>
+                                <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
                         <button type="submit" class="btn btn-primary">Simpan</button>

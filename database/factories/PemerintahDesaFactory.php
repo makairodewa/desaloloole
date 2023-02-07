@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Jabatan;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -19,8 +20,9 @@ class PemerintahDesaFactory extends Factory
     {
         return [
             'pmd_nama' => fake()->name(),
-            'pmd_jabatan' => fake()->title(),
+            'pmd_jabatan' => fake()->jobTitle(),
             'pmd_us_id' => User::first()->us_id,
+            'pmd_jb_id' => Jabatan::first()->jb_id,
         ];
     }
 }

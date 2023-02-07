@@ -20,9 +20,11 @@ return new class extends Migration
             $table->string('pmd_photo')->nullable();
             $table->string('pmd_notlp')->nullable();
             $table->string('pmd_fb')->nullable();
+            $table->foreignUuid('pmd_us_id');
+            $table->foreignUuid('pmd_jb_id');
             $table->string('pmd_wa')->nullable();
             $table->string('pmd_ig')->nullable();
-            $table->foreignUuid('pmd_us_id');
+            // $table->foreign('pmd_jb_id')->references('jb_id')->on('jabatans')->onDelete('cascade');
             $table->timestamps();
         });
     }
